@@ -98,7 +98,7 @@ class datagen():
 
             font = np.random.choice(self.font_list)
             # text_len = 5
-
+            font_name = font.split('/')[-1]
             text1, text2 = select_texts(self.texts_list)
 
             # text1 = np.random.choice(self.texts_list)
@@ -246,6 +246,9 @@ class datagen():
             # get font color
             if np.random.rand() < data_cfg.use_random_color_rate:
                 fg_col, bg_col = (np.random.rand(3) * 255.).astype(np.uint8), (np.random.rand(3) * 255.).astype(np.uint8)
+                
+                while np.linalg.norm(fg_col - bg_col) < 75:
+                    fg_col = (np.random.rand(3) * 255.).astype(np.uint8)
 
             else:
                 fg_col, bg_col = colorize.get_font_color(self.colorsRGB, self.colorsLAB, t_b)
@@ -284,17 +287,21 @@ class datagen():
                     }
             _, i_s = colorize.colorize(surf1, t_b, fg_col, bg_col, self.colorsRGB, self.colorsLAB, min_h, param)
             t_t, t_f = colorize.colorize(surf2, t_b, fg_col, bg_col, self.colorsRGB, self.colorsLAB, min_h, param)
-
-            # blur_kernel_size = (15, 15)  # 可以根據需要調整模糊核大小
-            blur_kernel_size = (np.random.choice(range(7, 21, 2)), np.random.choice(range(7, 21, 2)))
-            i_s = cv2.GaussianBlur(i_s, blur_kernel_size, 0)
-            t_f = cv2.GaussianBlur(t_f, blur_kernel_size, 0)
             
             # skeletonization
             t_sk = skeletonization.skeletonization(surf2, 127)
+
+            if np.random.rand() < 0.15:
+                sigma = np.random.uniform(0.5, 2.2)  # 控制模糊強度
+                # blur_kernel_size = (15, 15)  # 可以根據需要調整模糊核大小
+                blur_kernel_size = (np.random.choice(range(7, 17, 2)), np.random.choice(range(7, 17, 2)))
+                i_s = cv2.GaussianBlur(i_s, blur_kernel_size, sigma)
+                t_f = cv2.GaussianBlur(t_f, blur_kernel_size, sigma)
+                surf2 = cv2.GaussianBlur(surf2, blur_kernel_size, sigma)
+                surf1 = cv2.GaussianBlur(surf1, blur_kernel_size, sigma)
             break
    
-        return [i_s, t_sk, t_t, t_b, t_f, surf1, surf2, final_surf_list, text1, text2,text_list,[text_bbox1,char_bbox1],[text_bbox2,char_bbox2],angle]
+        return [i_s, t_sk, t_t, t_b, t_f, surf1, surf2, final_surf_list, text1, text2,text_list,[text_bbox1,char_bbox1],[text_bbox2,char_bbox2],angle, font_name]
         # return [i_t, i_s, t_sk, t_b, t_f, surf1, surf2 ,final_surf_list, text1, text2,text_list,angle]
 
 def enqueue_data(queue, capacity):  

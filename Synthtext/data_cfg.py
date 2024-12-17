@@ -12,8 +12,8 @@ underline_rate = 0
 strong_rate = 0
 oblique_rate = 0
 strength_rate = 0
-font_dir = 'datasets/fonts/english_ttf'
-standard_font_path = 'datasets/fonts/english_ttf/arial.ttf'
+font_dir = './datasets/fonts/english_ttf'
+standard_font_path = './datasets/fonts/english_ttf/arial.ttf'
 
 # text
 text_filepath = 'data/texts.txt'
@@ -21,8 +21,8 @@ capitalize_rate = 0
 uppercase_rate = 0
 
 # background
-bg_filepath = 'datasets/imnames.cp'
-temp_bg_path = 'datasets/bg_data/bg_img/'
+bg_filepath = './datasets/imnames.cp'
+temp_bg_path = './datasets/bg_data/bg_img/'
 
 ## background augment
 brightness_rate = 0.8
@@ -63,5 +63,5 @@ shadow_angle_degree = [1, 3, 5, 7] # shift for shadow_angle_param
 shadow_angle_param = [0.5, None] # scale, shift for np.random.randn()
 shadow_shift_param = np.array([[0, 1, 3], [2, 7, 15]], dtype = np.float32) # scale, shift for np.random.randn()
 shadow_opacity_param = [0.1, 0.5] # shift for shadow_angle_param
-color_filepath = 'data/colors.cp'
+color_filepath = 'data/colors_new.cp'
 use_random_color_rate = 0.5
