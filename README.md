@@ -52,7 +52,7 @@ You can also use this project to generate data online while training SRNet.
 
 - `mask_t`: the binary mask of styled text b
 
-![image](./datasets/image.png)
+![image](image.png)
 
 From left to right, from top to bottom are examples of `i_s, i_t, t_sk, t_t, t_b, t_f, mask_t`
 
