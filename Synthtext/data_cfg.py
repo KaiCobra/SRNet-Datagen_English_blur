@@ -12,8 +12,8 @@ underline_rate = 0
 strong_rate = 0
 oblique_rate = 0
 strength_rate = 0
-font_dir = './datasets/fonts/english_ttf'
-standard_font_path = './datasets/fonts/english_ttf/arial.ttf'
+font_dir = './datasets/english_ttf'
+standard_font_path = './datasets/english_ttf/arial.ttf'
 
 # text
 text_filepath = 'data/texts.txt'
