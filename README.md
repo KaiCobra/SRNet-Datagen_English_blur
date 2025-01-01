@@ -12,8 +12,14 @@ cd SRNet-Datagen_English_blur/
 ```
 **Install dataset(Fonts and Background images)**
 ```python
-git clone https://huggingface.co/datasets/BigCoco/TextCtrl_SynthDataset
+git clone https://huggingface.co/datasets/BigCoco/datasets
+unzip datasets/bg_data.zip -d datasets/
 ```
+**Start Generating**
+```python
+python textctrl_datagen.py
+```
+
 
 &nbsp;
 ## Introduction
