@@ -1,4 +1,19 @@
 # SRNet-Datagen - A data generator of SRNet
+&nbsp;
+## Setting up
+**Usage:**
+```python
+git clone https://github.com/KaiCobra/SRNet-Datagen_English_blur.git
+```
+## Dataset installation
+**Go to dir: SRNet-Datagen_English_blur/**
+```python
+cd SRNet-Datagen_English_blur/
+```
+**Install dataset(Fonts and Background images)**
+```python
+git clone https://huggingface.co/datasets/BigCoco/TextCtrl_SynthDataset
+```
 
 &nbsp;
 ## Introduction
